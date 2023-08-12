@@ -17,6 +17,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
+    testInput = "";
     if (testInput === "") {
         return "Empty";
     } else if (isNaN(testInput)) {
@@ -27,7 +28,22 @@ function validateInput(testInput) {
 		};
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-   validateInput();
+    let pilot = document.querySelector("input[name=pilotName]");
+	let copilot = document.querySelector("input[name=copilotName]");
+    let fuelLevel = document.querySelector("input[name=fuelLevel]");
+    let cargoLevel = document.querySelector("input[name=cargoMass]");
+    let list = document.querySelector("input[name=faultyItems]")
+
+    let form = document.getElementById("launchForm");
+
+    form.addEventListener("submit", function(event) {
+        if(validateInput() === "Empty") {
+            alert("All fields are required!");
+            list.style.visibility = 'visible';
+            event.preventDefault();
+        }
+    });
+
 }
 
 async function myFetch() {
