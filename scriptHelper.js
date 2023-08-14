@@ -28,22 +28,26 @@ function validateInput(testInput) {
 		};
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+
+    let list = getElementById("faultyItems");
+    let pilotName = getElementById("pilotStatus");
+    let copilotname = getElementById("copilotStatus");
+
+    document.addEventListener("submit", function(event) {
+
+    if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty" ) {
+        alert("All fields requrired!");
+        event.preventDefault();
+        
+    } else if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number" ) {
+        alert("Invalid input. Pilot and CoPilot must be a word!");
+        event.preventDefault();
+    } else if (validateInput(fuelLevel) === "Is a Number" || validateInput(cargoLevel) === "Not a Number") {
+        alert("Invalid input. Cargo Level and Fuel Level must be a number!");
+        event.preventDefault();
+    }
+    })
     
-    let form = document.getElementById("launchForm");
-
-    form.addEventListener("submit", function(event) {
-        let pilot = document.querySelector("input[name=pilotName]");
-        let copilot = document.querySelector("input[name=copilotName]");
-        let fuelLevel = document.querySelector("input[name=fuelLevel]");
-        let cargoLevel = document.querySelector("input[name=cargoMass]");
-        let list = document.querySelector("input[name=faultyItems]");
-
-        if(validateInput() === "Empty") {
-            alert("All fields are required!");
-            list.style.visibility = 'visible';
-            event.preventDefault();
-        }
-    });
 
 }
 
