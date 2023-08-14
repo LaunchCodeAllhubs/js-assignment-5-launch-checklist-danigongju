@@ -16,7 +16,7 @@ window.addEventListener("load", function() {
 
     let planetChoice = pickPlanet(listedPlanets);
 
-    let info = addDestinationInfo(document, planetChoice);
+    addDestinationInfo(planetChoice);
    })
-   formSubmission(pilot);
+   formSubmission();
 })

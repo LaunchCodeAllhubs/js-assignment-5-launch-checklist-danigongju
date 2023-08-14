@@ -38,8 +38,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
     if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty" ) {
         alert("All fields requrired!");
-        event.preventDefault();
-        
+        event.preventDefault();  
     } else if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number" ) {
         alert("Invalid input. Pilot and CoPilot must be a word!");
         event.preventDefault();
@@ -58,11 +57,9 @@ async function myFetch() {
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
        let planetPromise = response.json();
         planetPromise .then( function(json) {
-            console.log(json);
+            return planetsReturned;
          });
         });
-
-    return planetsReturned;
 }
 
 function pickPlanet(planets) {
